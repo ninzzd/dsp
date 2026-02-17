@@ -18,11 +18,14 @@ module upsampler
     always @(posedge clk) begin
         if(rst)
         begin
-            counter <= {N{1'b1}};
+            counter <= L-1;
         end
         else
         begin
-            counter <= counter + 1;
+            if (counter == L-1) // if counter is at max value, reset to 0
+                counter <= 0;
+            else
+                counter <= counter + 1;
         end
         temp <= in; // store input in temp register
     end

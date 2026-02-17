@@ -10,7 +10,7 @@ module upsampler_tb;
     reg [15:0] in;
     wire [15:0] out;
 
-    upsampler #(.W(16), .L(2)) uut (
+    upsampler #(.W(16), .L(3)) uut (
         .clk(clk),
         .rst(rst),
         .in(in),
@@ -33,8 +33,8 @@ module upsampler_tb;
 
         // Apply test vectors
         in = 16'h1234; // First input
-        #10 in = 16'h5678; // Second input after some cycles
-        #10 in = 16'h9ABC; // Third input after some cycles
+        #30 in = 16'h5678; // Second input after some cycles
+        #30 in = 16'h9ABC; // Third input after some cycles
 
         // Finish simulation after some time
         #25 $finish;
