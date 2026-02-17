@@ -1,0 +1,3 @@
+# GTKwave dumpfiles and iverilog binaries
+*.vvp
+*.vcd
