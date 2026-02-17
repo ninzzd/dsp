@@ -9,8 +9,9 @@ module upsampler_tb;
     reg rst;
     reg [15:0] in;
     wire [15:0] out;
-
-    upsampler #(.W(16), .L(3)) uut (
+    parameter L = 4; 
+    parameter T = 10;
+    upsampler #(.W(16), .L(L)) uut (
         .clk(clk),
         .rst(rst),
         .in(in),
@@ -18,7 +19,7 @@ module upsampler_tb;
     );
 
     // Clock generation
-    always #5 clk = ~clk; // Toggle clock every 5 time units (100 MHz)
+    always #(T/2) clk = ~clk; // Toggle clock every 5 time units (100 MHz)
 
     initial begin
         $dumpfile("upsampler_tb.vcd");
@@ -29,14 +30,14 @@ module upsampler_tb;
         in = 16'h0000;
 
         // Release reset after some time
-        #10 rst = 0;
+        #(T) rst = 0;
 
         // Apply test vectors
         in = 16'h1234; // First input
-        #30 in = 16'h5678; // Second input after some cycles
-        #30 in = 16'h9ABC; // Third input after some cycles
+        #(T*L) in = 16'h5678; // Second input after some cycles
+        #(T*L) in = 16'h9ABC; // Third input after some cycles
 
         // Finish simulation after some time
-        #25 $finish;
+        #(T*L + T/2) $finish;
     end
 endmodule
