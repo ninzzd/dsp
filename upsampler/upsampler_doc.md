@@ -1,13 +1,13 @@
 # Upsampler
 ## Overview
 An L-fold upsampler, also known as an expander, is used in digital signal processing to widen "shrink" or "squeeze" the digital spectrum of a signal. This is achieved by placing L-1 zeros between every pair of consecutive samples of the signal. More formally,
-$$
+```math
 y_{L}[n] = 
 \begin{cases}
 x[n] & \text{if } n = pL \; \text{where} \; p \in \mathbb{Z^+}\\
 0 & \text{otherwise}
 \end{cases}
-$$
+```
 
 ## Architecture
 The upsampler can be thought of as an L-state finite state machine (FSM). The input to the FSM must remain fixed throughout each cycle of the FSM. The output of the FSM equals the input in **only one** state of the FSM, while the outputs of the remaining (L-1) states is 0. 
