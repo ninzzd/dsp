@@ -1,15 +1,15 @@
 /*
-    To run: 
-        iverilog -o upsampler_tb.vvp upsampler/upsampler_tb.v upsampler/upsampler.v
-        vvp upsampler_tb.vvp
-        gtkwave upsampler_tb.vcd
+To run: 
+iverilog -o upsampler_tb.vvp upsampler/upsampler_tb.v upsampler/upsampler.v
+vvp upsampler_tb.vvp
+gtkwave upsampler_tb.vcd
 */
 module upsampler_tb;
     reg clk;
     reg rst;
     reg [15:0] in;
     wire [15:0] out;
-    parameter L = 4; 
+    parameter L = 5; 
     parameter T = 10;
     upsampler #(.W(16), .L(L)) uut (
         .clk(clk),
