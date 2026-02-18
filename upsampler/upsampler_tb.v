@@ -4,6 +4,7 @@ iverilog -o upsampler_tb.vvp upsampler/upsampler_tb.v upsampler/upsampler.v
 vvp upsampler_tb.vvp
 gtkwave upsampler_tb.vcd
 */
+`timescale 1ns/1ps
 module upsampler_tb;
     reg clk;
     reg rst;
